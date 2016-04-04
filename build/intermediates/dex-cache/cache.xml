@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\RDRL\Documents\Prasad AndroWorkbench\MusicPlayer\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ded9acc6a9792b8f1afc470f0c9cd36d178914cd">
+        <dex dex="C:\Users\RDRL\Documents\Prasad AndroWorkbench\MusicPlayer\build\intermediates\pre-dexed\debug\android-support-v4_996d55eb67bd6fb4e74ae6ae2d856237ffd7e09e.jar" />
+    </item>
+
+</items>
