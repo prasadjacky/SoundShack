@@ -24,31 +24,31 @@
         "source": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\res\\drawable\\button_prev.xml"
     },
     {
-        "merged": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\build\\intermediates\\res\\merged\\debug\\drawable\\button_shuffle.xml",
-        "source": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\res\\drawable\\button_shuffle.xml"
-    },
-    {
-        "merged": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\build\\intermediates\\res\\merged\\debug\\drawable\\button_playlist.xml",
-        "source": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\res\\drawable\\button_playlist.xml"
+        "merged": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\build\\intermediates\\res\\merged\\debug\\drawable\\button_play.xml",
+        "source": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\res\\drawable\\button_play.xml"
     },
     {
         "merged": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\build\\intermediates\\res\\merged\\debug\\drawable\\list_selector.xml",
         "source": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\res\\drawable\\list_selector.xml"
     },
     {
-        "merged": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\build\\intermediates\\res\\merged\\debug\\drawable\\button_play.xml",
-        "source": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\res\\drawable\\button_play.xml"
+        "merged": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\build\\intermediates\\res\\merged\\debug\\drawable\\button_playlist.xml",
+        "source": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\res\\drawable\\button_playlist.xml"
+    },
+    {
+        "merged": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\build\\intermediates\\res\\merged\\debug\\drawable\\button_shuffle.xml",
+        "source": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\res\\drawable\\button_shuffle.xml"
     },
     {
         "merged": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\build\\intermediates\\res\\merged\\debug\\drawable\\seekbar_progress.xml",
         "source": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\res\\drawable\\seekbar_progress.xml"
     },
     {
-        "merged": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\build\\intermediates\\res\\merged\\debug\\drawable\\image_bg.xml",
-        "source": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\res\\drawable\\image_bg.xml"
-    },
-    {
         "merged": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\build\\intermediates\\res\\merged\\debug\\drawable\\gradient_bg.xml",
         "source": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\res\\drawable\\gradient_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\build\\intermediates\\res\\merged\\debug\\drawable\\image_bg.xml",
+        "source": "C:\\Users\\RDRL\\Documents\\Prasad AndroWorkbench\\MusicPlayer\\res\\drawable\\image_bg.xml"
     }
 ]

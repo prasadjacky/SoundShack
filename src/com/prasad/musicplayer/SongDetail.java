@@ -12,10 +12,13 @@ public class SongDetail {
     private String Song_Path;
     private String Song_Duration;
     private String Album_Artwork;
+    private boolean isPlaying;
 
+    public SongDetail(){
 
+    }
 
-    public SongDetail(long Artist_ID,long Album_ID,String Song_Title,String Artist, String Song_Path,String Song_Duration,String Album_Artwork) {
+    public SongDetail(long Artist_ID,long Album_ID,String Song_Title,String Artist, String Song_Path,String Song_Duration,String Album_Artwork,boolean isPlaying) {
         // TODO Auto-generated constructor stub
         this.Artist_ID = Artist_ID;
         this.Album_ID = Album_ID;
@@ -24,6 +27,7 @@ public class SongDetail {
         this.Song_Path = Song_Path;
         this.Song_Duration = Song_Duration;
         this.Album_Artwork = Album_Artwork;
+        this.isPlaying=isPlaying;
     }
     public long getArtist_ID() {
         return Artist_ID;
@@ -66,5 +70,8 @@ public class SongDetail {
     }
     public void setArtist(String artist) {
         Artist = artist;
+    }
+    public boolean isPlaying() { return isPlaying;  }
+    public void setPlaying(boolean playing) {isPlaying = playing;
     }
 }

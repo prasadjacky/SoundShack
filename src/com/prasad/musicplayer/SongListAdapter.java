@@ -52,7 +52,7 @@ public class SongListAdapter extends BaseAdapter {
         TextView artist = (TextView)vi.findViewById(R.id.artist); // artist name
         TextView duration = (TextView)vi.findViewById(R.id.duration); // duration
         ImageView thumb_image=(ImageView)vi.findViewById(R.id.list_image); // thumb image
-
+        ImageView ivCurrentSong=(ImageView)vi.findViewById(R.id.ivCurrentSong);
 
         String songPath = data.get(position).getSong_Path();
         String songTitle = data.get(position).getSong_Title();
@@ -74,7 +74,16 @@ public class SongListAdapter extends BaseAdapter {
         }else{
             thumb_image.setImageURI(Uri.fromFile(new File(artWork)));
         }
+        //show play icon for the song which is being played.
+        if(data.get(position).isPlaying()){
+            ivCurrentSong.setImageResource(R.drawable.play_curr_song_blue);
+            ivCurrentSong.setVisibility(View.VISIBLE);
+        }
+        else {
+            ivCurrentSong.setVisibility(View.INVISIBLE);
+        }
         return vi;
     }
+
 
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -42,7 +43,7 @@ public class NowPlaying extends Fragment implements Runnable,View.OnClickListene
     private FragmentActivity fragmentActivity;
     private MainActivity mainActivity;
 
-    private String TAG = "Sound Shack";
+    private static String TAG = "Sound Shack";
     public static ImageButton play,next,prev,shuffle,repeat,playlist;
     public static SeekBar songProgress;
     public static TextView displayCurrentSong,tvSeekStart,tvSeekEnd;
@@ -63,6 +64,7 @@ public class NowPlaying extends Fragment implements Runnable,View.OnClickListene
     public static String playlist_status = "not_executed";
 
     //Player status
+    public static Integer last_position=null;
     public static String SHUFFLE = "OFF";
     public static String REPEAT = "OFF";
     public static String PLAYLIST_STATUS = "NOT_LOADED";
@@ -183,6 +185,7 @@ public class NowPlaying extends Fragment implements Runnable,View.OnClickListene
         }
     };
 
+    //phonestatelistener to pause/play song when a call comes.
     PhoneStateListener phoneStateListener = new PhoneStateListener(){
         @Override
         public void onCallStateChanged(int state, String incomingNumber) {
@@ -226,14 +229,14 @@ public class NowPlaying extends Fragment implements Runnable,View.OnClickListene
                     //startActivityForResult(i,100);
                     fragmentActivity.getActionBar().setSelectedNavigationItem(1);
                 } else {
-                    System.out.println("Alter media state");
+                    Log.i(TAG,"Alter media state");
                     if(player.isPlaying()){
-                        System.out.println("Pause song.");
                         MusicPlayback.pause();
+                        Log.i(TAG,"Pause song.");
                         play.setBackgroundResource(R.drawable.play_orange);
                     }else{
-                        System.out.println("Play song.");
                         MusicPlayback.play();
+                        Log.i(TAG,"Play song.");
                         play.setBackgroundResource(R.drawable.pause_orange);
                     }
                     //Toast.makeText(NowPlaying.this,"Playing " + currentSong, Toast.LENGTH_LONG).show();
@@ -318,7 +321,7 @@ public class NowPlaying extends Fragment implements Runnable,View.OnClickListene
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==100){
             currentSongPosition = data.getExtras().getInt("songIndex");
-            MusicPlayback.play_song(currentSongPosition);
+            NowPlaying.playSong(currentSongPosition);
         }
     }
 
@@ -448,11 +451,21 @@ public class NowPlaying extends Fragment implements Runnable,View.OnClickListene
     }
 
     public static void playSong(final int songIndex){
-        try{                
+        try{
         		player.reset();
-                player.setDataSource(songDetails.get(songIndex).getSong_Path()); 
+                player.setDataSource(songDetails.get(songIndex).getSong_Path());
+                if(NowPlaying.last_position!=null){
+                    NowPlaying.songDetails.get(NowPlaying.last_position).setPlaying(false);
+                    NowPlaying.last_position=songIndex;
+                    NowPlaying.songDetails.get(songIndex).setPlaying(true);
+                    AllSongs.adapter.notifyDataSetChanged();
+                }else {
+                    NowPlaying.last_position = songIndex;
+                    NowPlaying.songDetails.get(songIndex).setPlaying(true);
+                    AllSongs.adapter.notifyDataSetChanged();
+                }
                 player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-					
+
 					@Override
 					public void onCompletion(MediaPlayer mp) {
 						// TODO Auto-generated method stub
@@ -480,7 +493,7 @@ public class NowPlaying extends Fragment implements Runnable,View.OnClickListene
 				        }
 					}
 				});
-                
+
                 player.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mediaPlayer) {
@@ -498,9 +511,7 @@ public class NowPlaying extends Fragment implements Runnable,View.OnClickListene
                     songProgress.setEnabled(true);
                     songProgress.setProgress(0);
                     currentSongPosition = songIndex;
-                    System.out.println("Track no.:"+(currentSongPosition+1));
-                    System.out.println("Song Playing :" + currentSong);
-                    System.out.println("Artwork :"+artWork);
+                    Log.i(TAG,"Playing Track no.:"+(currentSongPosition+1)+" "+ currentSong);
                     long maxPosition = player.getDuration();
                     // long minutes = TimeUnit.MILLISECONDS.toMinutes(maxPosition);
                     // long seconds = TimeUnit.MILLISECONDS.toSeconds(maxPosition)/10;
@@ -521,8 +532,8 @@ public class NowPlaying extends Fragment implements Runnable,View.OnClickListene
                     play.setBackgroundResource(R.drawable.pause_orange);
                     new Thread(new NowPlaying()).start();
                 }
-            });            
-            player.prepare();
+            });
+            player.prepareAsync();
             //Tab1.player.start();
 
         } catch (IllegalArgumentException e) {
@@ -558,9 +569,6 @@ public class NowPlaying extends Fragment implements Runnable,View.OnClickListene
                         songProgress.setEnabled(true);
                         songProgress.setProgress(0);
                         //currentSongPosition = songIndex;
-                        System.out.println("Track no.:"+(currentSongPosition+1));
-                        System.out.println("Song Playing :" + currentSong);
-                        System.out.println("Artwork :"+artWork);
                         long maxPosition = player.getDuration();
                         // long minutes = TimeUnit.MILLISECONDS.toMinutes(maxPosition);
                         // long seconds = TimeUnit.MILLISECONDS.toSeconds(maxPosition)/10;
@@ -623,5 +631,4 @@ public class NowPlaying extends Fragment implements Runnable,View.OnClickListene
                 break;
         }
     }*/
-    
 }
